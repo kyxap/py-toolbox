@@ -2,9 +2,12 @@ import subprocess
 import os
 import shutil
 
+
 class BitwardenError(Exception):
     """Base class for library errors"""
+
     pass
+
 
 class BitwardenManager:
     def __init__(self, session_token: str = None):
@@ -14,7 +17,9 @@ class BitwardenManager:
 
     def _check_bw_installed(self):
         if not shutil.which("bw"):
-            raise BitwardenError("Bitwarden CLI (bw) not found in PATH. Install it: https://bitwarden.com/help/cli/")
+            raise BitwardenError(
+                "Bitwarden CLI (bw) not found in PATH. Install it: https://bitwarden.com/help/cli/"
+            )
 
     def unlock(self, master_password: str) -> str:
         """Unlocks the vault and saves the session"""
@@ -24,7 +29,7 @@ class BitwardenManager:
                 input=master_password,
                 capture_output=True,
                 text=True,
-                check=True
+                check=True,
             )
             self.session = res.stdout.strip()
             # Update environment variable for the current process
@@ -43,7 +48,7 @@ class BitwardenManager:
                 ["bw", "get", "password", item_name, "--session", self.session],
                 capture_output=True,
                 text=True,
-                check=True
+                check=True,
             )
             return res.stdout.strip()
         except subprocess.CalledProcessError:

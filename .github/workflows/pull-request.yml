@@ -1,13 +1,11 @@
-name: CI
+name: Pull Request CI
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  test-and-lint:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,8 +21,11 @@ jobs:
       - name: Install dependencies
         run: uv sync --all-extras --dev
 
-      - name: Run lint
+      - name: Lint with ruff
         run: uv run ruff check .
 
-      - name: Run tests
+      - name: Check format with ruff
+        run: uv run ruff format --check .
+
+      - name: Run tests with pytest
         run: uv run pytest
