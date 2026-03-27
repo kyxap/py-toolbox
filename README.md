@@ -42,5 +42,13 @@ To set up the development environment:
    uv run ruff check .
    ```
 
+## License
+
+This project is licensed under the **Polyform Non-Commercial License 1.0.0**.
+
+- **Free for Personal & Non-Commercial use**: You can use, modify, and distribute this code for personal projects or non-profit activities.
+- **Commercial Use Restricted**: Any commercial use, including by private entrepreneurs or businesses, is **prohibited** without explicit permission from the author.
+- **Contact**: If you wish to use this library for commercial purposes, please contact the author to discuss licensing terms.
+
 ---
 Happy coding!
