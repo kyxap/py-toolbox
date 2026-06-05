@@ -5,8 +5,8 @@ This is a Python library managed by `uv` for storing reusable scripts and utilit
 ## Architectural Patterns
 - **Layout**: Standard `src-layout` with `src/py_toolbox` as the main package.
 - **Submodules**: Tools are organized into submodules (e.g., `src/py_toolbox/bitwarden`).
-- **Imports**: Preferred import style is `from py_toolbox import BitwardenManager`.
-- **Tests**: Mirror the source structure in `tests/` (e.g., `tests/bitwarden/test_manager.py`).
+- **Imports**: Preferred import style is `from py_toolbox import BitwardenActor`.
+- **Tests**: Mirror the source structure in `tests/` (e.g., `tests/bitwarden/test_actor.py`).
 
 ## Coding Standards
 - **Language**: All code comments and docstrings must be in **English**.

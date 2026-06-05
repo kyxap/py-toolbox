@@ -16,11 +16,11 @@ If you find any bugs or have suggestions for improvements, please open an issue 
 
 As the collection grows and if certain tools gain enough popularity or complexity, they may be migrated into their own dedicated libraries.
 
-### Example: Bitwarden Manager
+### Example: Bitwarden Actor
 ```python
-from py_toolbox import BitwardenManager
+from py_toolbox import BitwardenActor
 
-bw = BitwardenManager()
+bw = BitwardenActor()
 # bw.unlock("your_master_password")
 # password = bw.get_password("MyItemName")
 ```
