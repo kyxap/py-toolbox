@@ -1,3 +1,3 @@
-from .manager import BitwardenManager, BitwardenError
+from .actor import BitwardenActor, BitwardenError
 
-__all__ = ["BitwardenManager", "BitwardenError"]
+__all__ = ["BitwardenActor", "BitwardenError"]

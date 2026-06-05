@@ -13,7 +13,7 @@ class BitwardenError(Exception):
     pass
 
 
-class BitwardenManager:
+class BitwardenActor:
     def __init__(self, session_token: str = None):
         # Allow passing a token during initialization or take it from environment
         self.session = session_token or os.environ.get("BW_SESSION")

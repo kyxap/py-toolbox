@@ -1,20 +1,20 @@
 import pytest
-from py_toolbox.bitwarden import BitwardenManager, BitwardenError
+from py_toolbox.bitwarden import BitwardenActor, BitwardenError
 from unittest.mock import MagicMock
 
 
-def test_bitwarden_manager_init_no_bw(mocker):
+def test_bitwarden_actor_init_no_bw(mocker):
     # Mock shutil.which to simulate 'bw' not installed
     mocker.patch("shutil.which", return_value=None)
     with pytest.raises(BitwardenError, match="Bitwarden CLI"):
-        BitwardenManager()
+        BitwardenActor()
 
 
-def test_bitwarden_manager_init_with_bw(mocker):
+def test_bitwarden_actor_init_with_bw(mocker):
     # Mock shutil.which to simulate 'bw' installed
     mocker.patch("shutil.which", return_value="/usr/local/bin/bw")
-    manager = BitwardenManager(session_token="test_session")
-    assert manager.session == "test_session"
+    actor = BitwardenActor(session_token="test_session")
+    assert actor.session == "test_session"
 
 
 def test_bitwarden_unlock(mocker):
@@ -26,11 +26,11 @@ def test_bitwarden_unlock(mocker):
         stdout="new_session_token", stderr="", returncode=0
     )
 
-    manager = BitwardenManager()
-    token = manager.unlock("mypassword")
+    actor = BitwardenActor()
+    token = actor.unlock("mypassword")
 
     assert token == "new_session_token"
-    assert manager.session == "new_session_token"
+    assert actor.session == "new_session_token"
     mock_run.assert_called_once()
 
 
@@ -41,8 +41,8 @@ def test_bitwarden_get_password(mocker):
     # Mock successful password retrieval
     mock_run.return_value = MagicMock(stdout="secret123", stderr="", returncode=0)
 
-    manager = BitwardenManager(session_token="test_session")
-    password = manager.get_password("MySecret")
+    actor = BitwardenActor(session_token="test_session")
+    password = actor.get_password("MySecret")
 
     assert password == "secret123"
     mock_run.assert_called_with(

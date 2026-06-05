@@ -2,6 +2,6 @@
 # Any commercial use, including by private entrepreneurs, is prohibited without permission.
 # Contact the author for commercial licensing.
 
-from .bitwarden import BitwardenManager, BitwardenError
+from .bitwarden import BitwardenActor, BitwardenError
 
-__all__ = ["BitwardenManager", "BitwardenError"]
+__all__ = ["BitwardenActor", "BitwardenError"]
